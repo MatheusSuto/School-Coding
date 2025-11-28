@@ -1,3 +1,4 @@
+import math
 
 a = 2
 b = 10
@@ -32,3 +33,24 @@ num2 = 10
 
 resultado = opera(num1, num2)
 print(resultado)
+
+
+num = '16'
+num1 = 2
+num2 = 5
+print()
+#print(num + num1 + num2) // Fails
+print(num, " ", num1 + num2)
+print(num,num1 + num2)
+print(f'{num}{str(num1 + num2)}')
+
+pot = 2**4
+print (pot)
+pot1 = pow(2, 4)
+print(pot1)
+
+raiz = math.sqrt(num1)
+print(f'{raiz:.3f}')
+
+
+
