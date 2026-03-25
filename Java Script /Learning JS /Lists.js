@@ -8,7 +8,7 @@ for (let i = 0; i < numeros.length; i++) {
 };
 
 if (achado !== null) {
-    console.log(achado+" foi encnotrado.") // this one
+    console.log(achado+" foi encontrado.") // this one
 } else {
     console.log("O número não foi encontrado!")
 }
