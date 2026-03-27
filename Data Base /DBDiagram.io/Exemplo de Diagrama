@@ -1,0 +1,21 @@
+Table Pais {
+  Id_Pais int
+  Pais_Nome varchar
+}
+
+Table Estado {
+  Id_Estado int
+  Estado_Nome varchar
+  Id_Pais varchar
+}
+
+Table Cidade {
+  Id_Cidade int
+  Cinema_Nome varchar
+  Id_Pais int
+  Id_Estado int
+}
+
+Ref: Pais.Id_Pais > Estado.Id_Pais
+Ref: Pais.Id_Pais > Cidade.Id_Pais
+Ref: Estado.Id_Estado > Cidade.Id_Estado
