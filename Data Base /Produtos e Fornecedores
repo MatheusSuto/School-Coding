@@ -1,0 +1,30 @@
+USE `3c xavier`;
+
+CREATE TABLE TBL_Produtos ( 
+	id_produto int auto_increment primary key,
+    prod_nome varchar(100) not null,
+    prod_margem_lucro double default 0,
+    prod_perecível boolean default 0,
+    prod_composto boolean default 0
+);
+
+CREATE TABLE Fornecedores (
+	id_fornecedor int auto_increment primary key,
+    nome_fornecedor varchar(100) not null,
+    produtos_fornecidos varchar(300) not null
+);
+
+-- Inserting into TBL_Produtos
+INSERT INTO TBL_Produtos (prod_nome, prod_margem_lucro, prod_perecível) VALUES ("Tomate", 6.00, 1);
+INSERT INTO TBL_Produtos (prod_nome, prod_margem_lucro, prod_perecível) VALUES ("Alface", 5.00, 1);
+
+-- Inserting into Fornecedores
+INSERT INTO Fornecedores (nome_fornecedor, produtos_fornecidos) VALUES ("Ambev", "Cerveja Skol, Cerveja Brahma, Guaraná Antartica, Pepsi");
+INSERT INTO Fornecedores (nome_fornecedor, produtos_fornecidos) VALUES ("Coca-Cola", "Coca-Cola, Coca-Cola Zero, Fanta Laranja, Sprite");
+
+
+select * from TBL_Produtos;
+select * from Fornecedores where produtos_fornecidos like "%Pepsi%";
+
+drop table TBL_Produtos;
+drop table Fornecedores;
