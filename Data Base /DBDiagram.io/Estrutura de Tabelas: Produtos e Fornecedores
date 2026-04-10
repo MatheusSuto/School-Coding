@@ -4,6 +4,7 @@ Table Produtos {
   prod_mergem_lucro double [default: 0]
   prod_perecivel boolean [default: 0]
   prod_composto boolean [default: 0]
+  prod_ativo boolean [default: 0]
 }
 
 Table Fornecedores {
@@ -20,9 +21,9 @@ Table Fornecedores {
   forn_endereco_complemento varchar(100) 
   forn_endereco_bairro varchar(100) [not null]
   forn_endereco_cep varchar(15) [not null]
-  forn_endereco_pais int [not null]
-  forn_endereco_estado int [not null]
-  forn_endereco_cidade int [not null]
+  Id_Pais int [not null]
+  Id_Estado int [not null]
+  Id_Cidade int [not null]
   forn_prazo_entrega date 
   forn_ativo boolean [default: 0]
 }
@@ -50,8 +51,6 @@ Ref: Pais.Id_Pais > Estado.Id_Pais
 Ref: Pais.Id_Pais > Cidade.Id_Pais
 Ref: Estado.Id_Estado > Cidade.Id_Estado
 
-Ref: Pais.Id_Pais > Fornecedores.forn_endereco_pais
-Ref: Estado.Id_Estado > Fornecedores.forn_endereco_estado
-Ref: Cidade.Id_Cidade > Fornecedores.forn_endereco_cidade
-
-Ref: Fornecedores.id_fornecedor > Produtos.id_produto
+Ref: Pais.Id_Pais > Fornecedores.Id_Pais
+Ref: Estado.Id_Estado > Fornecedores.Id_Estado
+Ref: Cidade.Id_Cidade > Fornecedores.Id_Cidade
