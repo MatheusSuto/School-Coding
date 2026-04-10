@@ -1,0 +1,57 @@
+Table Produtos {
+  id_produto autoincrement [primary key]
+  prod_nome varchar(100) [not null]
+  prod_mergem_lucro double [default: 0]
+  prod_perecivel boolean [default: 0]
+  prod_composto boolean [default: 0]
+}
+
+Table Fornecedores {
+  id_fornecedor autoincrement [primary key]
+  forn_nome varchar(100) [not null]
+  forn_cnpj varchar(20) [not null]
+  forn_cpf varcahr (20) [not null]
+  forn_contato_nome varchar(100) [not null]
+  forn_contato_telefone varchar(20) [not null]
+  forn_contato_gmail varchar(100) [not null]
+  forn_endereço_logradouro varchar(100) [not null]
+  forn_endereco_nome varchar(100) [not null]
+  forn_endereco_numero varchar(10) [not null]
+  forn_endereco_complemento varchar(100) 
+  forn_endereco_bairro varchar(100) [not null]
+  forn_endereco_cep varchar(15) [not null]
+  forn_endereco_pais int [not null]
+  forn_endereco_estado int [not null]
+  forn_endereco_cidade int [not null]
+  forn_prazo_entrega date 
+  forn_ativo boolean [default: 0]
+}
+
+Table Pais {
+  Id_Pais int
+  Pais_Nome varchar
+}
+
+Table Estado {
+  Id_Estado int
+  Estado_Nome varchar
+  Id_Pais varchar
+}
+
+Table Cidade {
+  Id_Cidade int
+  Cinema_Nome varchar
+  Id_Pais int
+  Id_Estado int
+}
+
+
+Ref: Pais.Id_Pais > Estado.Id_Pais
+Ref: Pais.Id_Pais > Cidade.Id_Pais
+Ref: Estado.Id_Estado > Cidade.Id_Estado
+
+Ref: Pais.Id_Pais > Fornecedores.forn_endereco_pais
+Ref: Estado.Id_Estado > Fornecedores.forn_endereco_estado
+Ref: Cidade.Id_Cidade > Fornecedores.forn_endereco_cidade
+
+Ref: Fornecedores.id_fornecedor > Produtos.id_produto
