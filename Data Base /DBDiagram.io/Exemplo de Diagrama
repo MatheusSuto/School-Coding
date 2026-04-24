@@ -6,7 +6,6 @@ Table Pais {
 Table Estado {
   Id_Estado int
   Estado_Nome varchar
-  Id_Pais varchar
 }
 
 Table Cidade {
