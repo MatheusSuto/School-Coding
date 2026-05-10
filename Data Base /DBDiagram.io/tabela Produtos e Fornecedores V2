@@ -1,0 +1,106 @@
+Table Produtos {
+  id_produto autoincrement [primary key]
+
+  prod_nome varchar(50) [not null]
+  prod_descrição text
+
+  prod_preço double [not null]
+  prod_estoque int [not null]
+
+  prod_perecível boolean [default: 1]
+  prod_composto boolean [default: 1]
+
+  prod_sku int [not null]
+  prod_data_cadastro date 
+  prod_ativo boolean [default: 0]
+
+  id_tipo_prod int [not null]
+}
+
+Table Tipo_Produto {
+  id_tipo_prod autoincrement [primary key]
+  prod_tipo_nome varchar(50) [not null]
+}
+
+Table Fornecedores {
+  id_fornecedores autoincrement [primary key]
+
+  forn_nome varchar(100) [not null]
+  forn_descrição text
+
+  id_tipo_forn int [not null]
+
+  forn_prazo_entrega date [not null]
+
+  id_tipo_juri int [not null]
+
+  id_dados_contato int [not null]
+
+  id_endereço int [not null]
+
+  id_pais int [not null]
+  id_estado int [not null]
+  id_cidade int [not null]
+
+  forn_ativo boolean [default: 0]
+}
+
+Table Tipo_Fornecedor {
+  id_tipo_forn autoincrement [primary key]
+  tipo_forn_nome varchar(50) [not null]
+}
+
+Table Tipo_Juridico {
+  id_tipo_juri autoincrement [primary key]
+  tipo_jur_nome varchar(50) [not null]
+  forn_CNPJ_CPF varchar(15) [not null]
+}
+
+Table Dados_Contato {
+  id_dados_contato autoincrement [primary key]
+  forn_contato varchar(100) [not null]
+  forn_email varchar(50) [not null]
+  forn_telefone varchar(20) [not null]
+}
+
+Table Endereço {
+  id_endereço autoincrement [primary key]
+  forn_logradouro varchar(100) [not null]
+  forn_endereço varchar(100) [not null]
+  forn_numero varchar(10) [not null]
+  forn_complemento varchar(50) [not null]
+  forn_bairro varchar(50) [not null]
+  forn_CEP varchar(15) [not null]
+}
+
+Table Pais {
+  id_pais autoincrement [primary key]
+  pais_nome varchar(50) [not null]
+}
+
+Table Estado {
+  id_estado autoincrement [primary key]
+  estado_nome varchar(50) [not null]
+  id_pais int [not null]
+}
+
+Table Cidade {
+  id_cidade autoincrement [primary key]
+  cidade_nome varchar(50) [not null]
+  id_pais int [not null]
+  id_estado int [not null]
+}
+
+
+
+
+Ref: Tipo_Produto.id_tipo_prod < Produtos.id_tipo_prod
+Ref: Fornecedores.id_tipo_forn > Tipo_Fornecedor.id_tipo_forn  
+Ref: Tipo_Juridico.id_tipo_juri - Fornecedores.id_tipo_juri
+Ref: Dados_Contato.id_dados_contato - Fornecedores.id_dados_contato
+Ref: Endereço.id_endereço > Fornecedores.id_endereço
+
+Ref: Pais.id_pais < Fornecedores.id_pais 
+Ref: Estado.id_estado < Fornecedores.id_estado
+Ref: Cidade.id_cidade < Fornecedores.id_cidade
+
