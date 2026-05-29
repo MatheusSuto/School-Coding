@@ -6,6 +6,6 @@ import random as rd
 
 listaPresentes = ["bola", "lápis", "caderno", "skate", "patins"]
 
-escolha = rd.randrange(1, 6)
+escolha = rd.randrange(1, 5)
 
 print(f"O presente escolhido foi {listaPresentes[escolha]}")
