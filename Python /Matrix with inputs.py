@@ -34,4 +34,4 @@ def matriz(size):
 
 tamanho = input("Digite o tamanho da matriz: ")
 tamanho = int(tamanho)
-print(matriz(tamanho))
+matriz(tamanho)
