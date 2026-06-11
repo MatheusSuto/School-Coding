@@ -10,8 +10,8 @@ Construa uma matriz com a seguinte formação:
 
 
 def matriz(size):
-    for i in range(size + 1):
-        for j in range(size + 1):
+    for i in range(size):
+        for j in range(size):
 
             if j > i:
                 continue
@@ -30,6 +30,7 @@ def matriz(size):
                     print(5 * (i + 5), end=" ")
                 """
         print()
+        
 
 
 tamanho = input("Digite o tamanho da matriz: ")
