@@ -1,9 +1,9 @@
 # Codes from school
 
-Data Base uses dbdiagram and mysql
+Data Base uses dbdiagram and MySQL
 
-Data Sciente uses python 
+Data Sciente uses Python 
 
-Prog Back-End uses JS
+Prog Back-End uses JS and Java
 
-Prog Dev Sist. uses python
+Prog Dev Sist. uses Python and C
