@@ -12,9 +12,23 @@ Se houver alguma violação do CONSTRAIN, a ação é abortada
 - CHECK - Cria uma condição específica a ser checada
 - DEFAULT - Ceia um valor padrão (para caso não haja inserção de valores)
 
-## Decimal
+## DECIMAL
 É um tipo de variável
 Define o máximo de algarismos a seres utilizados.
 Sintaxe: Decimal(a, b)
 Onde a = máximo de lagarismo inteiros & b = máximo de algarismos após a vírgula (decimais)
 Por que usar? Precisão.
+
+## TIMESTAMP
+É um tipo de variável
+Define o tempo com o formato YYYY-MM-DD hh:mm:ss
+
+## CALL
+Chama uma função para ser utilizada.
+
+## Procedures
+
+CREATE PROCEDURE <nome>(
+  IN <variável> -- valor a ser inserido (parâmetro),
+  OUT <variável> -- valor a sair (um retorno)
+)
