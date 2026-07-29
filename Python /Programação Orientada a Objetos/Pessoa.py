@@ -17,3 +17,14 @@ class Pessoa:
             self.__idade = novaIdade
         else: 
             print("Idade com erro!")
+
+# 3 - HERANÇA - Classe Advogado herda da classe Pessoa
+class Advogado(Pessoa):
+    def __init__ (self, nome: str, idade:int, oab:str):
+        # Método super() invoca o construtor da classe mãe (Pessoa)
+        super().__init__(nome, idade)
+        self.oab = oab #Só interessa à classe Advogado
+    #4 - POLIMORFISMO -  Classse Advogado cria sua prórpia forma
+    def peticionar(self):
+        return f'Advogado {self.obterNome()} peticionou o protocolo 286/26'
+
