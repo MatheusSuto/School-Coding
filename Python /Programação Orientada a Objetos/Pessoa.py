@@ -8,7 +8,7 @@ class Pessoa:
         # Métodos de ENCAPSULAMENTO: uso dos Getters e Setters
     def obterNome (self): 
         # Ler o nome verdadeiramente
-        return self._nome
+        return self.nome
     def obterIdade (self):
         return self.__idade
     #Alterando a idade privada com validação de segurança
@@ -31,7 +31,7 @@ class Advogado(Pessoa):
 # Criação da classe filha Médico. Essa classe irá herdar tudo da classe Pessoa.
 class Médico (Pessoa):
     def __init__ (self, nome:str, idade:int, crm: str):
-        super()._init_(nome, idade)
+        super().__init__(nome, idade)
         self.crm = crm # Atributo exclusivo da classe Médico
     # 4 - POLIMORFISMO - Executando o MNétodo Medicar
     def medicar(self):
@@ -48,5 +48,5 @@ print(f'Nome do Advogado: {advogada_ana.obterNome()}')
 print("Lista de pessoas profissionais: ")
 listaPessoas = [advogada_ana, medico_jorge]
 for pessoa in listaPessoas:
-    print(pessoa.patrocinar())
-    print(pessoa.medicar(()))
+    print(pessoa.peticionar())
+    print(pessoa.medicar())
