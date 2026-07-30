@@ -26,7 +26,7 @@ class Advogado(Pessoa):
         self.oab = oab #Só interessa à classe Advogado
     #4 - POLIMORFISMO -  Classse Advogado cria sua prórpia forma
     def peticionar(self):
-        return f'Advogado {self.obterNome()} peticionou o protocolo 286/26'
+        return f'Advogada {self.obterNome()} peticionou o protocolo 286/26'
 
 # Criação da classe filha Médico. Essa classe irá herdar tudo da classe Pessoa.
 class Médico (Pessoa):
@@ -35,7 +35,7 @@ class Médico (Pessoa):
         self.crm = crm # Atributo exclusivo da classe Médico
     # 4 - POLIMORFISMO - Executando o MNétodo Medicar
     def medicar(self):
-        return f'O médico{self.obterNome()} medicou o paciente às 9:45'
+        return f'O médico {self.obterNome()} medicou o paciente às 9:45'
     
 # PP - Criando os Ojetos de Instanciação e Respectivos Funcionamentos dos Métodos anteriormente construídos
 advogada_ana = Advogado("Ana", 32, "OAB-458") # Instanciação
@@ -48,5 +48,7 @@ print(f'Nome do Advogado: {advogada_ana.obterNome()}')
 print("Lista de pessoas profissionais: ")
 listaPessoas = [advogada_ana, medico_jorge]
 for pessoa in listaPessoas:
-    print(pessoa.peticionar())
-    print(pessoa.medicar())
+    if isinstance(pessoa, Advogado):
+        print(pessoa.peticionar())
+    elif isinstance(pessoa, Médico):
+        print(pessoa.medicar())
