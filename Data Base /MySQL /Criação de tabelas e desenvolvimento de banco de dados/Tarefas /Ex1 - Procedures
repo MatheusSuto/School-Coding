@@ -1,0 +1,54 @@
+use db_empresa_integrada
+
+delimiter $$
+create procedure proc_dius_P(
+	in p_operacao char (1), -- (I) insert; (D) delete; (U) update; (S) select]
+    out mensagem varchar(50),
+	in produto int,
+    in patrimonio varchar(50),
+    in setor int,
+    in _funcionario int,
+    in id_status int
+)
+begin 
+	-- OPERAÇÃO I
+	if p_operacao = 'I' then
+		insert into tbl_historico_acessos_log(
+			id_funcionario,
+            data_hora_acesso,
+            acao_realizada,
+            tabela_afetada
+        ) values (
+			id_func,
+            default,
+            acao,
+            tabela_alterada
+        );
+        
+        set mensagem = 'Ação registrada';
+	end if;
+    
+    -- OPERAÇÃO D
+    if p_operacao = 'D' then
+		delete from tbl_historico_acessos_log where log = id_log;
+        set mensagem = 'Ação deletada';
+	end if;
+    
+    -- OPERAÇÃO U
+    if p_operacao = 'U' then
+		update tbl_historico_acessos_log
+        set id_funcionario = id_func,
+			data_hora_acesso = default,
+			acao_realizada = acao,
+			tabela_afetada = tabela_alterada
+		where log = id_log;
+        set mensagem = 'Log alterado com sucesso';
+	end if;
+    
+    -- OPERAÇÃO S 
+    if p_operacao = 'S' then 
+		select * from tbl_historico_acessos_log where log = id_log;
+        set mensagem = 'Dados exibidos com sucesso';
+	end if;
+end $$
+delimiter ;
