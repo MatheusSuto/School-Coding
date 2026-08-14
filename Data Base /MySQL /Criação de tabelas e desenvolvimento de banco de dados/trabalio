@@ -144,5 +144,5 @@ begin
 end$$
 delimiter ;
 
-drop trigger trg_historico_acessos_log
-drop procedure proc_log
+-- drop trigger trg_historico_acessos_log
+-- drop procedure proc_log
