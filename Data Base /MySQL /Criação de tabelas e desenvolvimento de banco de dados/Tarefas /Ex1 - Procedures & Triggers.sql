@@ -1,5 +1,7 @@
 
-/*CREATE TABLE tbl_ativos_ti (
+/*
+-- Tabelas de referência
+CREATE TABLE tbl_ativos_ti (
     id_ativo INT AUTO_INCREMENT PRIMARY KEY,
     id_produto INT NOT NULL, 
     numero_patrimonio VARCHAR(50) NOT NULL UNIQUE,
@@ -32,7 +34,8 @@ CREATE TABLE tbl_historico_acessos_log (
 CREATE TABLE aux_niveis_acesso (
     id_nivel_acesso INT AUTO_INCREMENT PRIMARY KEY,
     nome_nivel VARCHAR(20) NOT NULL UNIQUE
-);*/
+);
+*/
 
 use db_empresa_integrada
 
