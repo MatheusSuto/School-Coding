@@ -36,7 +36,7 @@ CREATE TABLE aux_niveis_acesso (
 
 use db_empresa_integrada
 
-drop procedure if exists proc_dius_P
+
 
 delimiter $$
 create procedure proc_dius_P(
@@ -97,18 +97,19 @@ delimiter ;
 
 -- p_operacao (1), -- (I) insert; (D) delete; (U) update; (S) select;  id int; produto int; patrimonio varchar; setor int; funcionario int; id_status int; mensagem
 
-call proc_dius_P("I", null, 5, "122354", 7, 1, 2, @mensagem);
+call proc_dius_P("I", null, 5, "12", 7, 1, 2, @mensagem);
 select @mensagem;
 
-call proc_dius_P("S", 5, null, null, null, null, null, @mensagem);
+call proc_dius_P("S", 1, null, null, null, null, null, @mensagem);
 select @mensagem;
 
-call proc_dius_P("U", 3, 5, "123", 7, 1, 2, @mensagem);
+call proc_dius_P("U", 1, 5, "9999", 7, 1, 2, @mensagem);
 select @mensagem;
 
-call proc_dius_P("D", 3, null, null, null, null, null, @mensagem);
+call proc_dius_P("D", 1, null, null, null, null, null, @mensagem);
 select @mensagem;
 
+-- PROCEDURE FOR TRIGGER
 delimiter $$
 create procedure proc_log(
 		in id int,
@@ -118,7 +119,7 @@ create procedure proc_log(
         in tabela varchar (50)
 )
 begin
-	insert into tbl_historico_acessos_log(
+	insert into tbl_historico_acessos_log (
 		id_log,
         id_funcionario,
         data_hora_acesso,
@@ -134,15 +135,19 @@ begin
 	
 end $$
 delimiter ;
+-- TRIGGER
 
 delimiter $$
 create trigger trg_historico_acessos_log
-after insert on tbl_ativos_ti
+after insert 
+on tbl_ativos_ti
 for each row 
 begin
     call proc_log(null, 1, null, "Novo insert na tabela ativos ti", "tbl_ativos_ti") ;
 end$$
 delimiter ;
+select * from tbl_historico_acessos_log;
 
--- drop trigger trg_historico_acessos_log
--- drop procedure proc_log
+drop trigger if exists trg_historico_acessos_log;
+drop procedure if exists proc_log;
+drop procedure if exists proc_dius_P
