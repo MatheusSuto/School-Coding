@@ -1,7 +1,5 @@
 
-/*
--- Tabelas de referência
-CREATE TABLE tbl_ativos_ti (
+/*CREATE TABLE tbl_ativos_ti (
     id_ativo INT AUTO_INCREMENT PRIMARY KEY,
     id_produto INT NOT NULL, 
     numero_patrimonio VARCHAR(50) NOT NULL UNIQUE,
@@ -34,8 +32,7 @@ CREATE TABLE tbl_historico_acessos_log (
 CREATE TABLE aux_niveis_acesso (
     id_nivel_acesso INT AUTO_INCREMENT PRIMARY KEY,
     nome_nivel VARCHAR(20) NOT NULL UNIQUE
-);
-*/
+);*/
 
 use db_empresa_integrada
 
@@ -138,15 +135,39 @@ begin
 	
 end $$
 delimiter ;
--- TRIGGER
 
+
+-- TRIGGER
+-- INSERTS
 delimiter $$
-create trigger trg_historico_acessos_log
+create trigger trg_historico_acessos_log_insert
 after insert 
 on tbl_ativos_ti
 for each row 
 begin
     call proc_log(null, 1, null, "Novo insert na tabela ativos ti", "tbl_ativos_ti") ;
+end$$
+delimiter ;
+
+-- UPDATES
+delimiter $$
+create trigger trg_historico_acessos_log_update
+after update 
+on tbl_ativos_ti
+for each row 
+begin
+    call proc_log(null, 1, null, "Alterado valor na tablea ativos ti", "tbl_ativos_ti") ;
+end$$
+delimiter ;
+
+-- DELETES
+delimiter $$
+create trigger trg_historico_acessos_log_delete
+after delete 
+on tbl_ativos_ti
+for each row 
+begin
+    call proc_log(null, 1, null, "Linha deletada da tabela ativos ti", "tbl_ativos_ti") ;
 end$$
 delimiter ;
 select * from tbl_historico_acessos_log;
