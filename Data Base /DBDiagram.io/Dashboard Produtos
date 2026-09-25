@@ -15,12 +15,12 @@ table Fornecedor {
 
 table Produto_Fornecedor {
   id_prod_forn integer [not null]
-  id_prod_tipo integer [not null, ref: > Produto_Tipo.id_prod_tipo]
-  id_forn integer [not null, ref: > Fornecedor.id_forn]
+  id_prod_tipo integer [not null, ref: < Produto_Tipo.id_prod_tipo]
+  id_forn integer [not null, ref: < Fornecedor.id_forn]
   nome varchar [not null] //Maçã-Condor
   preço_compra double [not null] //5,49
   preço_venda double [not null] // 10,50
-  id_perecivel integer [not null, ref: > Perecível.id_perecivel]
+  id_perecivel integer [not null, ref: < Perecível.id_perecivel]
 }
 
 table Perecível {
@@ -39,7 +39,7 @@ table Estoque {
   id_estoque integer [not null]
   qnt_estoque integer [not null]
   qnt_vendida integer [not null]
-  id_mesano integer [not null, ref: > Mês_Ano.id_mesano]
+  id_mesano integer [not null, ref: < Mês_Ano.id_mesano]
   nome varchar [not null]
-  id_prod_forn integer [not null, ref: > Produto_Fornecedor.id_prod_forn]
+  id_prod_forn integer [not null, ref: -  Produto_Fornecedor.id_prod_forn]
 }
