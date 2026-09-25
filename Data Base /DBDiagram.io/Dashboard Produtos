@@ -1,0 +1,45 @@
+table Produto {
+  cod_produto integer [not null]
+  prod_tipo integer [not null, ref: > Produto_Fornecedor.id_prod_forn]
+} //1543332; 1 (Maçã-Condor)
+
+table Produto_Tipo {
+  id_prod_tipo integer [not null, pk]
+  nome varchar //Maçã
+}
+
+table Fornecedor {
+  id_forn integer [not null, pk]
+  nome varchar //Condor
+}
+
+table Produto_Fornecedor {
+  id_prod_forn integer [not null]
+  id_prod_tipo integer [not null, ref: > Produto_Tipo.id_prod_tipo]
+  id_forn integer [not null, ref: > Fornecedor.id_forn]
+  nome varchar [not null] //Maçã-Condor
+  preço_compra double [not null] //5,49
+  preço_venda double [not null] // 10,50
+  id_perecivel integer [not null, ref: > Perecível.id_perecivel]
+}
+
+table Perecível {
+  id_perecivel integer [not null] //0 é não perecível
+  perecivel boolean [not null] 
+  tempo_venc varchar //3 meses
+  nome varchar [not null] //3 meses
+}
+
+table Mês_Ano {
+  id_mesano integer //072025
+  nome varchar //07-2025
+}
+
+table Estoque {
+  id_estoque integer [not null]
+  qnt_estoque integer [not null]
+  qnt_vendida integer [not null]
+  id_mesano integer [not null, ref: > Mês_Ano.id_mesano]
+  nome varchar [not null]
+  id_prod_forn integer [not null, ref: > Produto_Fornecedor.id_prod_forn]
+}
